@@ -1,0 +1,177 @@
+.sale-status {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.status-upcoming {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.status-active {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.status-ended {
+  background: linear-gradient(135deg, #636363 0%, #a2a2a2 100%);
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(56, 239, 125, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(56, 239, 125, 0.8), 0 0 40px rgba(56, 239, 125, 0.4);
+  }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.product-info {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #fff 0%, #a8edea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #38ef7d;
+}
+
+.countdown-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.countdown-label {
+  display: block;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.countdown-timer {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stock-section {
+  position: relative;
+}
+
+.stock-info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.stock-count {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #38ef7d;
+}
+
+.stock-count.low-stock {
+  color: #f5576c;
+  animation: flash 1s ease-in-out infinite;
+}
+
+@keyframes flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.stock-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stock-bar-container {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stock-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease-out;
+}
+
+.stock-bar.low-stock {
+  background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+}
+
+.sold-out-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  background: linear-gradient(135deg, #f5576c 0%, #ff0844 100%);
+  color: #fff;
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
