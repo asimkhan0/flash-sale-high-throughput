@@ -42,8 +42,6 @@ flowchart TB
     PURCHASE_SVC --> REDIS
 ```
 
-![System Architecture](docs/architecture.png)
-
 ### Key Components
 
 | Component | Technology | Purpose |
