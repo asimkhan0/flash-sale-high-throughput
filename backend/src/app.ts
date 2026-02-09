@@ -6,6 +6,8 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import rateLimit from '@fastify/rate-limit';
+import swagger from '@fastify/swagger';
+import swaggerUi from '@fastify/swagger-ui';
 import { config } from './config/index.js';
 import { saleRoutes } from './routes/sale.routes.js';
 import { errorHandler } from './middleware/error-handler.js';
@@ -39,6 +41,37 @@ async function buildApp() {
             error: 'Too Many Requests',
             message: 'You are sending too many requests. Please slow down.',
         }),
+    });
+
+    // Register Swagger for API documentation
+    await fastify.register(swagger, {
+        openapi: {
+            openapi: '3.0.0',
+            info: {
+                title: 'Flash Sale API',
+                description: 'High-throughput flash sale backend API with Redis-based atomic operations',
+                version: '1.0.0',
+            },
+            servers: [
+                {
+                    url: `http://${config.server.host}:${config.server.port}`,
+                    description: 'Development server',
+                },
+            ],
+            tags: [
+                { name: 'sale', description: 'Flash sale operations' },
+                { name: 'admin', description: 'Admin operations' },
+            ],
+        },
+    });
+
+    // Register Swagger UI
+    await fastify.register(swaggerUi, {
+        routePrefix: '/docs',
+        uiConfig: {
+            docExpansion: 'list',
+            deepLinking: true,
+        },
     });
 
     // Set error handler

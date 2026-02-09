@@ -55,9 +55,19 @@ export async function saleRoutes(fastify: FastifyInstance) {
     // Attempt purchase
     fastify.post<{ Body: PurchaseRequest }>('/purchase', {
         schema: {
-            description: 'Attempt to purchase an item',
+            description: 'Attempt to purchase an item during the flash sale',
             tags: ['sale'],
             ...purchaseSchema,
+            response: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        success: { type: 'boolean' },
+                        message: { type: 'string' },
+                        remainingStock: { type: 'integer' },
+                    },
+                },
+            },
         },
     }, saleController.purchase);
 
@@ -67,6 +77,15 @@ export async function saleRoutes(fastify: FastifyInstance) {
             description: 'Check if a user has made a purchase',
             tags: ['sale'],
             ...userIdParamSchema,
+            response: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        hasPurchased: { type: 'boolean' },
+                        userId: { type: 'string' },
+                    },
+                },
+            },
         },
     }, saleController.getUserPurchaseStatus);
 
@@ -75,6 +94,15 @@ export async function saleRoutes(fastify: FastifyInstance) {
         schema: {
             description: 'Reset the flash sale (testing only)',
             tags: ['admin'],
+            response: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        success: { type: 'boolean' },
+                        message: { type: 'string' },
+                    },
+                },
+            },
         },
     }, saleController.reset);
 }
